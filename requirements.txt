@@ -1,0 +1,10 @@
+gdown
+langchain-text-splitters
+chromadb
+sentence-transformers
+pypdf
+beautifulsoup4
+openai
+gradio
+python-dotenv
+rank_bm25
