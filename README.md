@@ -28,28 +28,30 @@ Este domínio foi escolhido por se enquadrar diretamente na categoria "documenta
 
 ## 3. Arquitetura do Sistema
 
+```
 Documentos (Drive)
-│
-▼
+        │
+        ▼
 [Coleta] Google Drive API (chave pública) ──► data/CNMP_raw/ ──► filtro por extensão ──► data/CNMP_docs/
-│
-▼
+        │
+        ▼
 [Preparação] extração de texto (pypdf / BeautifulSoup) + OCR de fallback (Tesseract) ──► chunking (RecursiveCharacterTextSplitter)
-│
-▼
+        │
+        ▼
 [Indexação] embeddings (sentence-transformers) ──► ChromaDB (persistente)
-│
-▼
+        │
+        ▼
 [Consulta] pergunta do usuário (+ histórico da conversa)
-│
-▼
+        │
+        ▼
 [Recuperação] busca híbrida: vetorial (ChromaDB) + lexical (BM25) + boost em "Premiados.txt"
-│
-▼
+        │
+        ▼
 [Geração] LLM (Claude Sonnet 5, via OpenRouter) gera resposta com base no contexto recuperado e no histórico
-│
-▼
+        │
+        ▼
 [Interface] Gradio (chat) exibe resposta + fontes utilizadas
+```
 
 ## 4. Processo de Preparação dos Dados
 
