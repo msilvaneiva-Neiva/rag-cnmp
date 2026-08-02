@@ -1,0 +1,12 @@
+google-api-python-client
+langchain-text-splitters
+chromadb
+sentence-transformers
+pypdf
+pytesseract
+pdf2image
+beautifulsoup4
+openai
+gradio
+python-dotenv
+rank_bm25
