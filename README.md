@@ -98,7 +98,7 @@ Esse ajuste foi motivado por um caso real de teste (documentado na íntegra no n
 
 Implementamos memória de conversa para permitir perguntas de acompanhamento em linguagem natural (ex.: "e em 2014, quem venceu essa mesma categoria?"). A função `answer_question_with_history` (`src/rag.py`) incorpora as últimas trocas da conversa no prompt enviado ao LLM, tratando de forma defensiva tanto o formato de histórico em dicionários (`{"role": ..., "content": ...}`) quanto o formato legado em tuplas `(pergunta, resposta)`, garantindo compatibilidade independentemente da versão do Gradio instalada.
 
-A interface de chat (`gr.ChatInterface`) inclui ainda filtros complementares (MP, ano e categoria) que são incorporados à pergunta enviada ao pipeline, refinando o contexto recuperado sem exigir alterações na lógica de busca.
+A interface de chat inclui ainda filtros complementares (MP e ano) que são incorporados à pergunta enviada ao pipeline, refinando o contexto recuperado sem exigir alterações na lógica de busca. Após cada resposta, os filtros são reiniciados automaticamente para a próxima pergunta.
 
 ## 9. LLM Utilizado
 
@@ -109,7 +109,7 @@ Utilizamos o **Claude Sonnet 5** (Anthropic), acessado via **OpenRouter** (`anth
 A interface foi construída com **Gradio** (`gr.ChatInterface`), rodando diretamente no Google Colab com link público temporário (`share=True`). A interface permite:
 
 - Inserção de perguntas em linguagem natural, com memória das trocas anteriores da conversa;
-- Filtros complementares por MP, ano e categoria;
+- Filtros complementares por MP e ano, reiniciados automaticamente após cada resposta;
 - Exibição da resposta gerada pelo LLM;
 - Exibição separada das fontes (documentos) utilizadas para gerar a resposta, atendendo ao requisito de transparência da recuperação.
 
